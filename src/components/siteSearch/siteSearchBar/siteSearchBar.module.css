@@ -1,0 +1,55 @@
+/*
+ * Human Cell Atlas
+ * https://www.humancellatlas.org/
+ *
+ * Style definitions specific to HCA Data Portal site search bar component.
+ */
+
+/* Search bar. */
+.searchBar {
+  display: none;
+}
+
+/* Search bar - active. */
+.searchBar.active {
+  align-items: center;
+  background-color: var(--white);
+  display: flex;
+  height: 64px;
+  left: 0;
+  padding: 0 16px;
+  position: fixed;
+  top: 0;
+  width: 100vw;
+}
+
+/**
+ * 1200px - HCA specific breakpoint
+ */
+@media screen and (min-width: 1200px) {
+  /* Search bar. */
+  .searchBar {
+    display: flex;
+    flex-basis: 200px;
+  }
+
+  /* Search bar - active. */
+  .searchBar.active {
+    height: unset;
+    left: unset;
+    padding: unset;
+    position: relative;
+    top: unset;
+    width: unset;
+  }
+}
+
+/**
+ * 1280px - Large tablet portrait, large tablet landscape, medium window.
+ */
+@media screen and (min-width: 1280px) {
+  /* Search bar. */
+  .searchBar {
+    flex-basis: 300px;
+  }
+}

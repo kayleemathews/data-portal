@@ -12,6 +12,8 @@ import React from "react";
 // App dependencies
 import ClickHandler from "../clickHandler/clickHandler";
 import { HeaderQuery } from "../../hooks/header-query";
+import SiteSearchBar from "../siteSearch/siteSearchBar/siteSearchBar";
+import SiteSearchButton from "../siteSearch/siteSearchButton/siteSearchButton";
 
 // Images
 import headerLogo from "../../../images/logo/logo-hca.png";
@@ -27,8 +29,9 @@ import * as globalStyles from "../../styles/global.module.css";
 class Header extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { menuNav: false, openNav: false };
+    this.state = { menuNav: false, openNav: false, searchBarOpen: false };
     this.toggleMenu = this.toggleMenu.bind(this);
+    this.toggleSearchBar = this.toggleSearchBar.bind(this);
   }
 
   componentDidMount() {
@@ -44,6 +47,12 @@ class Header extends React.Component {
 
   shouldComponentUpdate(_, nextState) {
     return this.state !== nextState;
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (this.state.searchBarOpen && this.state.openNav) {
+      this.setState({ openNav: false });
+    }
   }
 
   setNavStyle = () => {
@@ -66,6 +75,10 @@ class Header extends React.Component {
       this.setState({ openNav: !openNav });
       this.props.onHandleSiteScroll(openNav);
     }
+  };
+
+  toggleSearchBar = (open) => {
+    this.setState({ searchBarOpen: open });
   };
 
   render() {
@@ -176,6 +189,11 @@ class Header extends React.Component {
               <Nav key={i} nav={l} />
             ))}
           </div>
+          <SiteSearchButton toggleSearchBar={this.toggleSearchBar} />
+          <SiteSearchBar
+            searchBarOpen={this.state.searchBarOpen}
+            toggleSearchBar={this.toggleSearchBar}
+          />
           <ClickHandler
             className={classNames(compStyles.menuDropDown, fontStyles.s, {
               [compStyles.hide]: !menuNav,
@@ -200,6 +218,5 @@ class Header extends React.Component {
 
 export default (props) => {
   const { docPath } = props;
-
   return <Header links={HeaderQuery()} docPath={docPath} {...props} />;
 };

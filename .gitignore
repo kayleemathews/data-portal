@@ -22,3 +22,6 @@ site/style-bundle.js
 
 # Metadata search index
 static/metadata-index.json
+
+# Keys
+keys.sh

@@ -2,12 +2,11 @@
  * Human Cell Atlas
  * https://www.humancellatlas.org/
  *
- * HCA Data Portal metadata search input clear button wrapper component.
- * Clears text in search <input>.
+ * HCA Data Portal site search bar input clear component.
  */
 
 // Core dependencies
-import React from "react";
+import React, { FC } from "react";
 import { CSSTransition } from "react-transition-group";
 
 // App dependencies
@@ -16,7 +15,7 @@ import Icon from "../../icon/icon";
 import Color from "../../ui/color/color";
 
 // Styles
-import { searchClear } from "./metadataSearchInputClear.module.css";
+import { searchClear } from "./siteSearchInputClear.module.css";
 import {
   opacityEnter,
   opacityEnterActive,
@@ -24,8 +23,11 @@ import {
   opacityExitActive,
 } from "../../ui/transition/opacity.module.css";
 
-function MetadataSearchInputClear(props) {
-  const { onHandleClearInput, showClear } = props;
+interface Props {
+  showClearButton: boolean;
+}
+
+const SiteSearchInputClear: FC<Props> = ({ showClearButton }): JSX.Element => {
   const classNamesTransition = {
     enter: opacityEnter,
     enterActive: opacityEnterActive,
@@ -36,17 +38,17 @@ function MetadataSearchInputClear(props) {
   return (
     <CSSTransition
       classNames={classNamesTransition}
-      in={showClear}
+      in={showClearButton}
       timeout={400}
       unmountOnExit
     >
       <span className={searchClear}>
-        <Button color={Color.GRAY_LIGHT} onClick={() => onHandleClearInput()}>
+        <Button color={Color.GRAY_LIGHT}>
           <Icon fontSize={20}>close</Icon>
         </Button>
       </span>
     </CSSTransition>
   );
-}
+};
 
-export default React.memo(MetadataSearchInputClear);
+export default React.memo(SiteSearchInputClear);

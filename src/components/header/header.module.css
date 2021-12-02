@@ -198,7 +198,6 @@ a.logo img {
 @media screen and (min-width: 840px) {
   /* Wrapper */
   .headerWrapper {
-    justify-content: flex-start;
     position: relative; /* Positions links - left aligned with content */
   }
 }
