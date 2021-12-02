@@ -6,6 +6,7 @@
  */
 
 // Core dependencies
+import classNames from "classnames"; // classname helper
 import React, {
   FC,
   FocusEvent,
@@ -21,15 +22,17 @@ import SiteSearchInputClear from "../siteSearchInputClear/siteSearchInputClear";
 import SiteSearchInputIcon from "../siteSearchInputIcon/siteSearchInputIcon";
 
 // Styles
-import { input } from "./siteSearchInput.module.css";
+import { input, lungmap as darkTheme } from "./siteSearchInput.module.css";
 
 interface Props {
+  lungmap: boolean;
   searchBarOpen: boolean;
   searchTerms: string;
   toggleSearchBar: ToggleSearchBarFn;
 }
 
 const SiteSearchInput: FC<Props> = ({
+  lungmap,
   searchBarOpen,
   searchTerms,
   toggleSearchBar,
@@ -108,9 +111,9 @@ const SiteSearchInput: FC<Props> = ({
 
   return (
     <>
-      <SiteSearchInputIcon />
+      <SiteSearchInputIcon lungmap={lungmap} />
       <input
-        className={input}
+        className={classNames(input, { [darkTheme]: lungmap })}
         defaultValue={searchTerms}
         onBlur={(focusEvent) => onInputBlur(focusEvent, toggleSearchBar)}
         onChange={(changeEvent) => setInputValue(changeEvent.target.value)}
@@ -121,7 +124,10 @@ const SiteSearchInput: FC<Props> = ({
         spellCheck="false"
         type="text"
       />
-      <SiteSearchInputClear showClearButton={showClearButton} />
+      <SiteSearchInputClear
+        lungmap={lungmap}
+        showClearButton={showClearButton}
+      />
     </>
   );
 };

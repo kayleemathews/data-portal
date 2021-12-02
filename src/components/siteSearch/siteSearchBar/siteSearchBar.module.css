@@ -23,12 +23,19 @@
   width: 100vw;
 }
 
+/* Lungmap active. */
+.searchBar.lungmap.active {
+  background-color: var(--primary);
+  height: 60px;
+}
+
 /**
  * 1200px - HCA specific breakpoint
  */
 @media screen and (min-width: 1200px) {
   /* Search bar. */
   .searchBar {
+    border-radius: 3px; /* Matches input. */
     display: flex;
     flex-basis: 200px;
   }
@@ -41,6 +48,11 @@
     position: relative;
     top: unset;
     width: unset;
+  }
+
+  /* Lungmap active. */
+  .searchBar.lungmap.active {
+    background-color: transparent;
   }
 }
 

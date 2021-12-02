@@ -13,7 +13,12 @@ import React, { FC } from "react";
 import Color from "../ui/color/color";
 
 // Styles
-import { colorGrayLight, colorPrimary, icon } from "./icon.module.css";
+import {
+  colorGrayLight,
+  colorPrimary,
+  colorWhite,
+  icon,
+} from "./icon.module.css";
 
 interface Props {
   color?: Color;
@@ -30,6 +35,7 @@ const Icon: FC<Props> = ({
   const classNamesIcon = classNames(icon, {
     [colorGrayLight]: color === Color.GRAY_LIGHT,
     [colorPrimary]: color === Color.PRIMARY,
+    [colorWhite]: color === Color.WHITE,
   });
 
   return (

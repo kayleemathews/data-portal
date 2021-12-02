@@ -18,6 +18,7 @@ import SiteSearchInput from "../siteSearchInput/siteSearchInput";
 import { form } from "./siteSearchForm.module.css";
 
 interface Props {
+  lungmap: boolean;
   searchBarOpen: boolean;
   searchPartner: string;
   searchTerms: string;
@@ -25,6 +26,7 @@ interface Props {
 }
 
 const SiteSearchForm: FC<Props> = ({
+  lungmap,
   searchBarOpen,
   searchPartner,
   searchTerms,
@@ -39,6 +41,7 @@ const SiteSearchForm: FC<Props> = ({
       }
     >
       <SiteSearchInput
+        lungmap={lungmap}
         searchBarOpen={searchBarOpen}
         searchTerms={searchTerms}
         toggleSearchBar={toggleSearchBar}

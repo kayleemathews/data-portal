@@ -24,10 +24,15 @@ import {
 } from "../../ui/transition/opacity.module.css";
 
 interface Props {
+  lungmap: boolean;
   showClearButton: boolean;
 }
 
-const SiteSearchInputClear: FC<Props> = ({ showClearButton }): JSX.Element => {
+const SiteSearchInputClear: FC<Props> = ({
+  lungmap,
+  showClearButton,
+}): JSX.Element => {
+  const iconColor = lungmap ? Color.WHITE : Color.GRAY_LIGHT;
   const classNamesTransition = {
     enter: opacityEnter,
     enterActive: opacityEnterActive,
@@ -43,7 +48,7 @@ const SiteSearchInputClear: FC<Props> = ({ showClearButton }): JSX.Element => {
       unmountOnExit
     >
       <span className={searchClear}>
-        <Button color={Color.GRAY_LIGHT}>
+        <Button color={iconColor}>
           <Icon fontSize={20}>close</Icon>
         </Button>
       </span>

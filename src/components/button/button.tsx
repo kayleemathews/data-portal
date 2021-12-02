@@ -18,6 +18,7 @@ import {
   button,
   buttonIcon,
   buttonIconPrimary,
+  buttonIconWhite,
   colorGrayLight,
 } from "./button.module.css";
 
@@ -35,6 +36,7 @@ const Button: FC<Props> = ({
   const classNamesButton = classNames(button, {
     [buttonIcon]: variant === ButtonVariant.ICON_BUTTON,
     [buttonIconPrimary]: color === Color.PRIMARY,
+    [buttonIconWhite]: color === Color.WHITE,
     [colorGrayLight]: color === Color.GRAY_LIGHT,
   });
 

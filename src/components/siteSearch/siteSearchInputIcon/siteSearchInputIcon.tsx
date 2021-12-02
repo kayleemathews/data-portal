@@ -16,10 +16,15 @@ import Color from "../../ui/color/color";
 // Styles
 import { searchIcon } from "./siteSearchInputIcon.module.css";
 
-const SiteSearchInputIcon: FC = (): JSX.Element => {
+interface Props {
+  lungmap: boolean;
+}
+
+const SiteSearchInputIcon: FC<Props> = ({ lungmap }): JSX.Element => {
+  const iconColor = lungmap ? Color.WHITE : Color.GRAY_LIGHT;
   return (
     <span className={searchIcon}>
-      <Icon color={Color.GRAY_LIGHT}>search</Icon>
+      <Icon color={iconColor}>search</Icon>
     </span>
   );
 };

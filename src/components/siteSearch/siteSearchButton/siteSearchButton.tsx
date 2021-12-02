@@ -18,15 +18,18 @@ import { searchButton } from "./siteSearchButton.module.css";
 import { ToggleSearchBarFn } from "../siteSearchBar/siteSearchBar";
 
 interface Props {
+  lungmap?: boolean;
   toggleSearchBar: ToggleSearchBarFn;
 }
 
 export default function SiteSearchButton({
+  lungmap = false,
   toggleSearchBar,
 }: Props): JSX.Element {
+  const iconColor = lungmap ? Color.WHITE : Color.GRAY_LIGHT;
   return (
     <div className={searchButton}>
-      <Button color={Color.GRAY_LIGHT} onClick={() => toggleSearchBar(true)}>
+      <Button color={iconColor} onClick={() => toggleSearchBar(true)}>
         <Icon>search</Icon>
       </Button>
     </div>

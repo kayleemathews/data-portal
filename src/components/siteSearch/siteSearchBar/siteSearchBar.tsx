@@ -15,16 +15,22 @@ import { getSearchParams, SearchLocation } from "../siteSearch";
 import SiteSearchForm from "../siteSearchForm/siteSearchForm";
 
 // Styles
-import { active, searchBar } from "./siteSearchBar.module.css";
+import {
+  active,
+  lungmap as darkTheme,
+  searchBar,
+} from "./siteSearchBar.module.css";
 
 export type ToggleSearchBarFn = (open: boolean) => void;
 
 interface Props {
+  lungmap?: boolean;
   searchBarOpen: boolean;
   toggleSearchBar: ToggleSearchBarFn;
 }
 
 const SiteSearchBar: FC<Props> = ({
+  lungmap = false,
   searchBarOpen,
   toggleSearchBar,
 }): JSX.Element => {
@@ -32,8 +38,13 @@ const SiteSearchBar: FC<Props> = ({
   const [searchTerms, searchPartner] = getSearchParams(currentLocation);
 
   return (
-    <div className={classNames({ [active]: searchBarOpen }, searchBar)}>
+    <div
+      className={classNames({ [active]: searchBarOpen }, searchBar, {
+        [darkTheme]: lungmap,
+      })}
+    >
       <SiteSearchForm
+        lungmap={lungmap}
         searchBarOpen={searchBarOpen}
         searchPartner={searchPartner}
         searchTerms={searchTerms}

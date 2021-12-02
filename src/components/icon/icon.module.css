@@ -23,3 +23,8 @@
 .colorPrimary {
   color: var(--primary);
 }
+
+/* Color white. */
+.colorWhite {
+  color: var(--white);
+}

@@ -14,3 +14,20 @@
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+
+/* Lungmap specific style overrides. */
+.input.lungmap {
+  border-color: var(--white);
+  caret-color: var(--white);
+  color: var(--white);
+}
+
+/* Input focus. */
+.input.lungmap:focus {
+  border: 2px solid var(--white);
+}
+
+/* Input - placeholder. */
+.input.lungmap::placeholder {
+  color: var(--white);
+}
